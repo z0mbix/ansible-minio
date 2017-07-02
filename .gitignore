@@ -1,0 +1,6 @@
+.DS_Store
+.ctags
+.envrc
+.kitchen/
+.vagrant
+tags

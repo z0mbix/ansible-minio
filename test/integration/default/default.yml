@@ -1,0 +1,10 @@
+---
+
+- hosts: all
+
+  vars:
+    minio_access_key: 6YhiuS15GCVYuFItay6w
+    minio_secret_key: 8JqBTVC4SUxICWtg2BmRFRBoIxh2SNRMdTGnADaducsswiyfW7fsGK2QFE21K1du
+
+  roles:
+    - role: ansible-minio

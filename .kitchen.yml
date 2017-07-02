@@ -1,0 +1,30 @@
+---
+
+driver:
+  name: vagrant
+  network:
+  - ["forwarded_port", {guest: 9000, host: 9000}]
+  vagrantfiles:
+    - test/Vagrantfile.rb
+
+provisioner:
+  name: ansible_playbook
+  hosts: all
+  require_chef_for_busser: false
+  require_ruby_for_busser: false
+  ansible_diff: true
+  idempotency_test: true
+  custom_pre_install_command: |
+    sudo -s <<SUDO
+    sed -i 's/#MaxSessions.*/MaxSessions 50/' /etc/ssh/sshd_config
+    systemctl restart sshd
+    SUDO
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: bento/centos-7.3
+
+suites:
+  - name: default

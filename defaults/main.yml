@@ -1,0 +1,17 @@
+---
+
+minio_arch:
+  i386: 386
+  x86_64: amd64
+  aarch64: arm64
+  armv7l: arm
+
+minio_user: minio
+minio_group: minio
+minio_port: 9000
+minio_data_volume: /data/minio
+minio_install_dir: /usr/local/bin
+minio_download_url: "https://dl.minio.io/server/minio/release/{{ ansible_system | lower }}-{{ minio_arch[ansible_architecture] }}/minio"
+minio_client_download_url: "https://dl.minio.io/client/mc/release/{{ ansible_system | lower }}-{{ minio_arch[ansible_architecture] }}/mc"
+minio_access_key: ""
+minio_secret_key: ""
